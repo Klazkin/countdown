@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countdown</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+Hello world
+
+<div class="day-container">
+    {% for w in range(day_total // 7) %}
+        <div class="day-week-container">
+            {{ w + 1 }}
+            {% for d in range(7) %}
+                {% if w * 7 + d < day_delta %}
+                    <div class="day-elapsed"></div>
+                {% else %}
+                    <div class="day"></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

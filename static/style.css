@@ -1,0 +1,32 @@
+
+.day-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.day-week-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: black 1px solid;
+    margin: 2px;
+}
+
+
+.day {
+    min-width: 16px;
+    min-height: 16px;
+    margin: 2px;
+    background-color: red;
+    max-width: 16px;
+    max-height: 16px;
+}
+
+.day-elapsed {
+    min-width: 16px;
+    min-height: 16px;
+    margin: 2px;
+    background-color: green;
+    max-width: 16px;
+    max-height: 16px;
+}
