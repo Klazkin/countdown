@@ -8,48 +8,71 @@
 </head>
 <body>
 
-<p>
-    Day: {{ day_delta }} out of {{ day_total }}.
-</p>
+<div class="stats">
+    <p>
+        Day: {{ day_delta }} out of {{ day_total }}.
+    </p>
+    <p>
+        Days remaining: {{ day_total - day_delta }}
+    </p>
+    <p>
+        Time left:
+    </p>
+</div>
 
-<p>
-    Days remaining: {{ day_total - day_delta }}
-</p>
+{% for year in calendar %}
+    <div class="year-title">
+        {{ year }}
+        <div class="year-separator"></div>
 
-<div class="day-container">
-    {% for w in range(day_total // 7) %}
-        <div class="day-week-container">
-            <div class="week-number">
-                {{ w + 1 }}
-            </div>
-
-            {% for d in range(7) %}
-                {% if (w == 0 and start_offset > d) %}
-                    <div class="day-filler">
-                {% elif w * 7 + d < day_delta %}
-                    <div class="day-elapsed">
-                {% else %}
-                    <div class="day">
-                {% endif %}
-
-                {% if w * 7 + d in days_free %}
-                   F
-                {% endif %}
-
-            </div>
+        <div class="month-grid-container">
+            {% for month in calendar[year] %}
+                {% include 'month_block.html' with context %}
             {% endfor %}
         </div>
+    </div>
+{% endfor %}
 
-        {% if w == sbk_end %}
-            <div class="separator">
-                <div class="line"></div>
-                <span class="separator-text">SBK END</span>
-                <div class="line"></div>
-            </div>
-        {% endif %}
 
-    {% endfor %}
-</div>
+
+
+{#<div class="day-container">#}
+{#    {% for w in range(day_total // 7) %}#}
+{#        <div class="day-week-container">#}
+{#            <div class="week-number">#}
+{#                {{ w + 1 }}#}
+{#            </div>#}
+{##}
+{#            {% for d in range(7) %}#}
+{#                {% if (w == 0 and start_offset > d) %}#}
+{#                    <div class="day-filler">#}
+{#                {% if w * 7 + d < day_delta %}#}
+{#                    <div class="day-elapsed">#}
+{#                {% else %}#}
+{#                    <div class="day">#}
+{#                {% endif %}#}
+{##}
+{#                {% if w * 7 + d == day_delta %}#}
+{#                    <div class="current-day"></div>#}
+{##}
+{#                {% elif w * 7 + d in days_free %}#}
+{#                   F#}
+{#                {% endif %}#}
+{##}
+{#            </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{##}
+{#        {% if w == sbk_end %}#}
+{#            <div class="separator">#}
+{#                <div class="line"></div>#}
+{#                <span class="separator-text">SBK END</span>#}
+{#                <div class="line"></div>#}
+{#            </div>#}
+{#        {% endif %}#}
+{##}
+{#    {% endfor %}#}
+{#</div>#}
 
 </body>
 </html>
