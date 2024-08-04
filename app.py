@@ -6,10 +6,9 @@ from datetime import datetime, timedelta
 dt = datetime
 
 start = dt(2024, 7, 16, 12, 30, 0)
-now = dt.now()
 end = dt(2025, 6, 20, 12)
 day_total = (end.date() - start.date()).days
-day_delta = (now.date() - start.date()).days
+
 sbk_end = (dt(2024, 9, 1).date() - start.date()).days // 7
 app = Flask(__name__)
 
@@ -24,6 +23,11 @@ month_names = [
     "May", "June", "July", "August", "September",
     "October", "November", "December"
 ]
+
+
+def calculate_day_delta_from_now() -> int:
+    now = dt.now()
+    return (now.date() - start.date()).days
 
 
 @dataclass
@@ -41,7 +45,7 @@ def generate_calendar():
     ret = {}
     end_date = end.date()
     current_date = start.date()
-    day_delta_counter = day_delta
+    day_delta_counter = calculate_day_delta_from_now()
 
     while current_date <= end_date:
         if current_date.year not in ret:
@@ -66,7 +70,7 @@ def generate_calendar():
 def main_route():
     calendar = generate_calendar()
     return render_template("index.html",
-                           day_delta=day_delta,
+                           day_delta=calculate_day_delta_from_now(),
                            day_total=day_total,
                            # days_free=days_free,
                            start_offset=start_offset,
