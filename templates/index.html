@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Countdown</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 <body>
 
@@ -15,18 +15,19 @@
     <p class="time-left-header">
         Time left: 
     </p>
-    <p>
-        Days remaining: {{ day_total - day_delta }}
-    </p>
-    <p>
-        Hours remaining: <span id="hours-remaining"></span>
-    </p>
-    <p>
-        Minutes remaining: <span id="minutes-remaining"></span>
-    </p>
-    <p>
-        Seconds remaining: <span id="seconds-remaining"></span>
-    </p>
+    
+    <div class="time-left">
+        <p>
+            {{ day_total - day_delta }} days remaining
+        </p>
+        <p>or</p>
+        <span></span>
+        <span id="hours-remaining"></span>
+        :
+        <span id="minutes-remaining"></span>
+        :
+        <span id="seconds-remaining"></span>
+    </div>
 </div>
 
 {% for year in calendar %}

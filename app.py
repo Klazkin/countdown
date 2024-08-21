@@ -6,12 +6,8 @@ from datetime import datetime, timedelta
 dt = datetime
 
 start = dt(2024, 7, 16, 12, 30, 0)
-<<<<<<< HEAD
 now = dt.now()
 end = dt(2025, 6, 18, 12)
-=======
-end = dt(2025, 6, 20, 12)
->>>>>>> fe4395851e3a09de0489807d12b338ae79d98fc2
 day_total = (end.date() - start.date()).days
 
 sbk_end = (dt(2024, 9, 1).date() - start.date()).days // 7

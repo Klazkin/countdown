@@ -21,9 +21,41 @@ const getSecondsRemaining = () => {
   return diffInSeconds;
 };
 
-const addDataToDom = () => {
-  const HoursRemaining = getHoursRemaining();
-  console.log(HoursRemaining);
+const getFormattedTimeLeft = () => {
+  const minutesRemaining = getMinutesRemaining();
+  const secondsRemaining = getSecondsRemaining();
+
+  const hoursLeft = getHoursRemaining();
+
+  let minutesLeft = minutesRemaining % (hoursLeft * 60);
+  if (minutesLeft < 10) {
+    minutesLeft = `0${minutesLeft}`;
+  }
+
+  let secondsLeft = secondsRemaining % (minutesRemaining * 60);
+  if (secondsLeft < 10) {
+    secondsLeft = `0${secondsLeft}`;
+  }
+
+  return {
+    hoursLeft,
+    minutesLeft,
+    secondsLeft,
+  };
 };
 
-addDataToDom();
+const addDataToDom = () => {
+  const formattedTimeLeft = getFormattedTimeLeft();
+
+  const hoursElement = document.querySelector("#hours-remaining");
+  const minutesElement = document.querySelector("#minutes-remaining");
+  const secondsElement = document.querySelector("#seconds-remaining");
+
+  hoursElement.innerText = formattedTimeLeft.hoursLeft;
+  minutesElement.innerText = formattedTimeLeft.minutesLeft;
+  secondsElement.innerText = formattedTimeLeft.secondsLeft;
+};
+
+setInterval(() => {
+  addDataToDom();
+}, 1000);

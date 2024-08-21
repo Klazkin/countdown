@@ -123,9 +123,22 @@ body {
 .stats {
   margin-top: 16px;
   text-align: end;
+  display: flex;
+  flex-direction: column;
 }
 
-.stats p {
+.stats > * {
+  margin: 4px 0;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.time-left {
+  margin-top: -8px;
+  text-align: center;
+}
+
+.time-left > * {
   margin: 4px 0;
 }
 
