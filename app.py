@@ -7,7 +7,7 @@ dt = datetime
 
 start = dt(2024, 7, 16, 12, 30, 0)
 now = dt.now()
-end = dt(2025, 6, 20, 12)
+end = dt(2025, 6, 18, 12)
 day_total = (end.date() - start.date()).days
 day_delta = (now.date() - start.date()).days
 sbk_end = (dt(2024, 9, 1).date() - start.date()).days // 7

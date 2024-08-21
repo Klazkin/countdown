@@ -12,11 +12,20 @@
     <p>
         Day: {{ day_delta }} out of {{ day_total }}.
     </p>
+    <p class="time-left-header">
+        Time left: 
+    </p>
     <p>
         Days remaining: {{ day_total - day_delta }}
     </p>
     <p>
-        Time left:
+        Hours remaining: <span id="hours-remaining"></span>
+    </p>
+    <p>
+        Minutes remaining: <span id="minutes-remaining"></span>
+    </p>
+    <p>
+        Seconds remaining: <span id="seconds-remaining"></span>
     </p>
 </div>
 
