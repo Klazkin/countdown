@@ -126,6 +126,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "773648b94d0e5d620f64f280777445740e61fe701025087ec8b57f45c791888b"
 
 [[package]]
+name = "countdown"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "getrandom 0.3.2",
+ "gloo",
+ "rand",
+ "yew",
+]
+
+[[package]]
 name = "equivalent"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1235,17 +1246,6 @@ dependencies = [
  "quote",
  "rustversion",
  "syn 2.0.100",
-]
-
-[[package]]
-name = "yew-test"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "getrandom 0.3.2",
- "gloo",
- "rand",
- "yew",
 ]
 
 [[package]]
