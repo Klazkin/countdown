@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;400;600&display=swap");
+
+body {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    max-width: 80%;
+    background-color: black;
+    color: lightgray;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.day-container {
+    font-family: monospace;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-content: start;
+    align-items: start;
+    gap: 0.5em;
+    font-size: 0.5em;
+    text-align: start;
+    font-weight: 500;
+    place-items: center;
+}
+
+.week-number {
+    min-width: 32px;
+    font-weight: 900;
+    font-size: 1.2em;
+    color: gray;
+}
+
+.day {
+    width: 16px;
+    height: 16px;
+    margin: 2px;
+    background-color: #404040;
+    max-width: 16px;
+    max-height: 16px;
+    text-align: center;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    font-weight: 900;
+    color: black;
+}
+
+.day-completed {
+    width: 16px;
+    height: 16px;
+    margin: 2px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    color: black;
+}
+
+.day-completed-current {
+    width: 16px;
+    height: 16px;
+    margin: 2px;
+    background-color: dodgerblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    color: black;
+}
+
+.day-filler {
+    min-width: 16px;
+    min-height: 16px;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.separator-text {
+    padding: 0 8px;
+    white-space: nowrap;
+    font-weight: 500;
+    font-family: Montserrat, "serif";
+}
+
+.line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: lightgray;
+}
+
+.current-day {
+    /*border: dodgerblue solid;*/
+    /*border-radius: 100%;*/
+    background-color: dodgerblue;
+    width: 16px;
+    height: 16px;
+}
+
+.month-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10em, 2fr));
+}
+
+.month {
+    padding: 1em;
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: center;
+    font-size: 20px;
+    color: gray;
+    font-weight: 500;
+}
+
+.month-current {
+    margin: 0.7em;
+    padding: 0.3em;
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: center;
+    border: 2px dashed;
+    font-weight: 500;
+}
+
+.month-completed {
+    padding: 1em;
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: center;
+    color: white;
+    font-weight: 400;
+}
+
+.year {
+    font-size: 1.5em;
+    color: gray;
+    font-family: Montserrat, "sans-serif";
+    font-weight: 400;
+}
+
+.year-completed {
+    font-size: 1.5em;
+    color: lightgray;
+    font-family: Montserrat, "sans-serif";
+    font-weight: 400;
+}
+
+.year-sep {
+    flex-grow: 1;
+    height: 1px;
+    background-image: linear-gradient(to right, gray 25%, transparent);
+}
+
+.year-sep-completed {
+    flex-grow: 1;
+    height: 1px;
+    background-image: linear-gradient(to right, lightgray 25%, transparent);
+}
+
+.progress-bar {
+    display: flex;
+    border: lightgray solid 1px;
+    width: 16em;
+    text-align: center;
+    border-radius: 1px;
+}
+
+.progress-bar-fill {
+    border-radius: 1px;
+    height: 1.3em;
+    background-color: lightgray;
+    margin: 2px;
+}
+
+.progress-bar-text {
+    position: absolute;
+    mix-blend-mode: difference;
+    font-weight: 400;
+    width: 16em;
+}
+
+.stats {
+    margin-top: 1em;
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+}
+
+.stats > * {
+    margin: 4px 0;
+    align-self: flex-end;
+}
+
+.time-left {
+    margin-top: -8px;
+    text-align: center;
+}
+
+.time-left > * {
+    margin: 4px 0;
+}
+
+.time-left-header {
+    font-size: 1.25rem;
+    padding-top: 8px;
+    color: gray;
+}
