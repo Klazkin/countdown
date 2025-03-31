@@ -113,11 +113,6 @@ fn calendar_months(
         MonthCompletion::Partial(_) => "month-current",
     };
 
-    let day_class = match completion {
-        MonthCompletion::Completed => "day-completed",
-        MonthCompletion::NotStarted | MonthCompletion::Partial(_) => "day-completed-current",
-    };
-
     let day_color = day_color();
     let month_style = if matches!(completion, MonthCompletion::Partial(_)) {
         format!("color:{}; border_color:{}", &day_color, &day_color)
@@ -152,7 +147,7 @@ fn calendar_months(
                 }).collect::<Html>() }
 
                 { (0..elapsed).map(|_| html! {
-                    <div class={day_class} style={day_style.clone()}></div>
+                    <div class="day-completed" style={day_style.clone()}></div>
                 }).collect::<Html>() }
 
                 { (0..remaining).map(|d| html! {
@@ -175,19 +170,12 @@ fn calendar_months(
 #[function_component(Calendar)]
 fn calendar() -> Html {
     let now = Utc::now();
-    // let now = Utc.with_ymd_and_hms(2025, 3, 10, 23, 0, 0).unwrap();
     let start = Utc.with_ymd_and_hms(2024, 7, 16, 12, 0, 0).unwrap();
     let end = Utc.with_ymd_and_hms(2025, 6, 13, 12, 0, 0).unwrap();
 
     let mut calendar = HashMap::<i32, CalendarYearProp>::new();
-    let mut date = start
-        .with_day(1)
-        .unwrap()
-        .with_hour(0)
-        .unwrap()
-        .with_minute(0)
-        .unwrap()
-        .with_second(0)
+    let mut date = Utc
+        .with_ymd_and_hms(start.year(), start.month(), 1, 0, 0, 0)
         .unwrap();
 
     while date.with_day(1) <= end.with_day(1) {
@@ -275,7 +263,7 @@ impl Component for Stats {
         let start = Utc.with_ymd_and_hms(2024, 7, 16, 12, 0, 0).unwrap();
         let end = Utc.with_ymd_and_hms(2025, 6, 13, 12, 0, 0).unwrap();
 
-        let total_delta = (end - start);
+        let total_delta = end - start;
         let current_delta = end - Utc::now();
         let factor = 1.0
             - (current_delta.num_milliseconds() as f64) / (total_delta.num_milliseconds() as f64);

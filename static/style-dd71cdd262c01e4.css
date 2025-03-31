@@ -21,15 +21,8 @@ body {
     gap: 0.5em;
     font-size: 0.5em;
     text-align: start;
-    font-weight: 500;
+    font-weight: 400;
     place-items: center;
-}
-
-.week-number {
-    min-width: 32px;
-    font-weight: 900;
-    font-size: 1.2em;
-    color: gray;
 }
 
 .day {
@@ -37,14 +30,6 @@ body {
     height: 16px;
     margin: 2px;
     background-color: #404040;
-    max-width: 16px;
-    max-height: 16px;
-    text-align: center;
-    display: flex;
-    justify-content: start;
-    align-items: end;
-    font-weight: 900;
-    color: black;
 }
 
 .day-completed {
@@ -52,53 +37,14 @@ body {
     height: 16px;
     margin: 2px;
     background-color: lightgray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 900;
-    color: black;
-}
-
-.day-completed-current {
-    width: 16px;
-    height: 16px;
-    margin: 2px;
-    background-color: dodgerblue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 900;
-    color: black;
 }
 
 .day-filler {
-    min-width: 16px;
-    min-height: 16px;
+    width: 16px;
+    height: 16px;
 }
 
-.separator {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.separator-text {
-    padding: 0 8px;
-    white-space: nowrap;
-    font-weight: 500;
-    font-family: Montserrat, "serif";
-}
-
-.line {
-    flex-grow: 1;
-    height: 1px;
-    background-color: lightgray;
-}
-
-.current-day {
-    /*border: dodgerblue solid;*/
-    /*border-radius: 100%;*/
-    background-color: dodgerblue;
+.current-day {;
     width: 16px;
     height: 16px;
 }
@@ -108,15 +54,24 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(10em, 2fr));
 }
 
+.month-completed {
+    padding: 1em;
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: center;
+    color: lightgray;
+    font-weight: 400;
+}
+
 .month {
     padding: 1em;
     display: inline-flex;
     flex-direction: column;
     vertical-align: center;
-    font-size: 20px;
-    color: gray;
-    font-weight: 500;
+    color: #404040;
+    font-weight: 400;
 }
+
 
 .month-current {
     margin: 0.7em;
@@ -125,21 +80,17 @@ body {
     flex-direction: column;
     vertical-align: center;
     border: 2px dashed;
-    font-weight: 500;
+    font-weight: 400;
 }
 
-.month-completed {
-    padding: 1em;
-    display: inline-flex;
-    flex-direction: column;
-    vertical-align: center;
-    color: white;
+h3 {
+    font-family: Montserrat, "sans-serif";
     font-weight: 400;
 }
 
 .year {
     font-size: 1.5em;
-    color: gray;
+    color: #404040;
     font-family: Montserrat, "sans-serif";
     font-weight: 400;
 }
@@ -154,7 +105,7 @@ body {
 .year-sep {
     flex-grow: 1;
     height: 1px;
-    background-image: linear-gradient(to right, gray 25%, transparent);
+    background-image: linear-gradient(to right, #404040 25%, transparent);
 }
 
 .year-sep-completed {
@@ -169,6 +120,7 @@ body {
     width: 16em;
     text-align: center;
     border-radius: 1px;
+    margin-top: 1em;
 }
 
 .progress-bar-fill {
@@ -190,24 +142,5 @@ body {
     text-align: end;
     display: flex;
     flex-direction: column;
-}
-
-.stats > * {
-    margin: 4px 0;
-    align-self: flex-end;
-}
-
-.time-left {
-    margin-top: -8px;
-    text-align: center;
-}
-
-.time-left > * {
-    margin: 4px 0;
-}
-
-.time-left-header {
-    font-size: 1.25rem;
-    padding-top: 8px;
-    color: gray;
+    align-items: end;
 }
