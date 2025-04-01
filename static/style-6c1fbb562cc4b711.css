@@ -39,11 +39,6 @@ body {
     background-color: lightgray;
 }
 
-.day-filler {
-    width: 16px;
-    height: 16px;
-}
-
 .current-day {;
     width: 16px;
     height: 16px;
@@ -70,6 +65,10 @@ body {
     vertical-align: center;
     color: #404040;
     font-weight: 400;
+}
+
+.month-name {
+    padding-left: 0.5em
 }
 
 
@@ -104,13 +103,13 @@ h3 {
 
 .year-sep {
     flex-grow: 1;
-    height: 1px;
+    height: 2px;
     background-image: linear-gradient(to right, #404040 25%, transparent);
 }
 
 .year-sep-completed {
     flex-grow: 1;
-    height: 1px;
+    height: 2px;
     background-image: linear-gradient(to right, lightgray 25%, transparent);
 }
 
