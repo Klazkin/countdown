@@ -41,10 +41,19 @@ impl Component for Stats {
         };
         let day = self.now.day();
         let total_delta = end() - start();
-        let remaining_delta = self.now - start();
-        let factor = (remaining_delta.num_milliseconds() as f64)
+        let elapsed_delta = self.now - start();
+        let remaining_delta = total_delta - elapsed_delta;
+        let factor = (elapsed_delta.num_milliseconds() as f64)
             / (total_delta.num_milliseconds() as f64)
             * 100.0;
+
+        let time_left_formatted = format!(
+            "{}:{:0>2}:{:0>2}.{:0>3}",
+            remaining_delta.num_hours(),
+            remaining_delta.num_minutes() % 60,
+            remaining_delta.num_seconds() % 60,
+            remaining_delta.num_milliseconds() % 1000,
+        );
 
         html! {
             <div class="stats">
@@ -52,15 +61,14 @@ impl Component for Stats {
 
                  <div>
                     { format!("Day {} of {} ({} left)",
-                        remaining_delta.num_days(),
+                        elapsed_delta.num_days() + 1, // account for ongoing day
                         total_delta.num_days(),
-                        (total_delta - remaining_delta).num_days(),
+                        remaining_delta.num_days() - 1,
                     )}
                 </div>
 
                 <div>
-                    {format!("Seconds left: {:.3}s",
-                        remaining_delta.num_milliseconds() as f64 / 1000.0)}
+                    {format!("{time_left_formatted} (HH:MM:SS.mm)")}
                 </div>
 
                 <div class="progress-bar">

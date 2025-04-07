@@ -180,8 +180,12 @@ pub fn calendar() -> Html {
         date = date.checked_add_months(Months::new(1)).unwrap();
     }
 
-    calendar
-        .values()
+    let mut years = calendar.values().collect::<Vec<&CalendarYearProp>>();
+
+    years.sort_by(|a, b| a.year.cmp(&b.year));
+
+    years
+        .into_iter()
         .map(|cld| {
             html! {
                 <CalendarYear year={cld.year} months={cld.months.clone()}/>
